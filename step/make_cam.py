@@ -33,7 +33,7 @@ def _work(process_id, model, dataset, args):
             strided_up_size = imutils.get_strided_up_size(size, 16)
 
             outputs = [model(img[0].cuda(non_blocking=True))
-                       for img in pack['img']]   # 4个尺度每一个都过一遍
+                       for img in pack['img']]   # 4
 
             strided_cam = torch.sum(torch.stack(
                 [F.interpolate(torch.unsqueeze(o, 0), strided_size, mode='bilinear', align_corners=False)[0] for o
