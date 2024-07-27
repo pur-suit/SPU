@@ -127,7 +127,7 @@ if __name__ == '__main__':
         import step.make_cam
 
         timer = pyutils.Timer('step.make_cam:')
-        step.make_cam.run(args)      # 将cam以npy形式存储
+        step.make_cam.run(args)      
 
     if args.eval_cam_pass is True:
         import step.eval_cam
@@ -154,10 +154,10 @@ if __name__ == '__main__':
         import step.make_uns_cam
 
         timer = pyutils.Timer('step.make_cam:')
-        step.make_uns_cam.run(args)    # 这里是得到10582张的
+        step.make_uns_cam.run(args)    # 10582
 
     if args.eval_uns_cam_pass is True:
-        import step.eval_uns_cam    # 这里评估是1464张
+        import step.eval_uns_cam    # 1464
 
         timer = pyutils.Timer('step.eval_cam:')
         step.eval_uns_cam.run(args)
