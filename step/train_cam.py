@@ -91,8 +91,8 @@ def run(args):
 
             x_2, x_cam_spm = SPM(img)
             loss2 = F.multilabel_soft_margin_loss(x_2, label)
-            loss_cps = torch.mean(torch.abs(x_cam_origin - x_cam_spm))
-            loss = 0.5*loss1 + 0.5*loss2 + 0.5*loss_cps
+            loss_pt = torch.mean(torch.abs(x_cam_origin - x_cam_spm))
+            loss = 0.5*loss1 + 0.5*loss2 + 0.5*loss_pt
 
 
             avg_meter.add({'loss1': loss.item()})
