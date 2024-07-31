@@ -130,7 +130,7 @@ class VOC12ImageDataset(Dataset):
         name = self.img_name_list[idx]
         name_str = decode_int_filename(name)
 
-        img_path = get_img_path(name_str, "../data/voc12")  # 奇怪，前面用../../都可以读到，这里就不行
+        img_path = get_img_path(name_str, "../data/voc12")  
         img = np.asarray(imageio.imread(img_path))
 
         if self.resize_long:
@@ -187,7 +187,7 @@ class VOC12ClassificationDatasetMSF(VOC12ClassificationDataset):
         name = self.img_name_list[idx]
         name_str = decode_int_filename(name)
 
-        img_path = get_img_path(name_str, "../data/voc12")  # 奇怪，前面用../../都可以读到，这里就不行
+        img_path = get_img_path(name_str, "../data/voc12") 
         img = np.asarray(imageio.imread(img_path))
         # img = imageio.imread(get_img_path(name_str, self.voc12_root))
 
@@ -233,17 +233,17 @@ class VOC12SegmentationDataset(Dataset):
         name = self.img_name_list[idx]
         name_str = decode_int_filename(name)
 
-        img_path = get_img_path(name_str, "../data/voc12")  # 奇怪，前面用../../都可以读到，这里就不行
+        img_path = get_img_path(name_str, "../data/voc12") 
         img = imageio.imread(img_path)
-        # img = imageio.imread(get_img_path(name_str, self.voc12_root))  # 原本
+        # img = imageio.imread(get_img_path(name_str, self.voc12_root))  
 
-        label = imageio.imread(os.path.join(self.label_dir, name_str + '.png'))  #label -- ir_label(可试着优化）
+        label = imageio.imread(os.path.join(self.label_dir, name_str + '.png'))  #label -- ir_label
 
         img = np.asarray(img)
         label = np.asarray(label)
 
         if self.rescale:
-            img, label = imutils.random_scale((img, label), scale_range=self.rescale, order=(3, 0))   #不同插值方式随机缩放img,label 大小
+            img, label = imutils.random_scale((img, label), scale_range=self.rescale, order=(3, 0))   
 
         if self.img_normal:
             img = self.img_normal(img)
